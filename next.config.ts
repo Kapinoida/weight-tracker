@@ -3,6 +3,7 @@ const nextConfig = {
   async headers() {
     return [
       {
+        // This matches all routes
         source: "/:path*",
         headers: [
           {
@@ -31,7 +32,10 @@ const nextConfig = {
       },
     ];
   },
-  reactStrictMode: true,
+  // Enable App Router
+  experimental: {
+    appDir: true,
+  },
 };
 
 module.exports = nextConfig;

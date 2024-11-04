@@ -1,16 +1,14 @@
+// app/embed-test/page.tsx
+export const dynamic = "force-dynamic"; // this ensures the page is not static
+
 export default function EmbedTest() {
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>Embed Test Page</h1>
-      <p>If you can see this in Clickup, the embedding is working!</p>
+    <div className="p-5">
+      <h1 className="text-2xl font-bold mb-4">Embed Test Page</h1>
+      <p className="mb-2">
+        If you can see this in Clickup, the embedding is working!
+      </p>
       <p>Current time: {new Date().toLocaleString()}</p>
     </div>
   );
-}
-
-// Disable static optimization for this page to ensure it's always server-side rendered
-export async function getServerSideProps() {
-  return {
-    props: {},
-  };
 }
