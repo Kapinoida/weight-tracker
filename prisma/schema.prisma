@@ -1,0 +1,32 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  height    Int?      // height in inches
+  birthDate DateTime?
+  gender    String?
+  weights   Weight[]
+}
+
+model Weight {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  date      DateTime
+  weight    Float    // weight in pounds
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  note      String?  // optional notes about the weigh-in
+
+  @@index([userId, date])
+}
