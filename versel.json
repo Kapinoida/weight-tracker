@@ -21,7 +21,7 @@
         },
         {
           "key": "X-Frame-Options",
-          "value": "ALLOWALL"
+          "value": "ALLOW-FROM https://www.notion.so"
         }
       ]
     }
